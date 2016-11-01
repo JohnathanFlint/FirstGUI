@@ -24,11 +24,15 @@ public class FirstPanel extends JPanel
 		colorButton = new JButton("Color!");
 		randomButton = new JButton("Random");
 		baseLayout = new SpringLayout();
-		baseLayout.putConstraint(SpringLayout.WEST, randomButton, 0, SpringLayout.WEST, colorButton);
-		baseLayout.putConstraint(SpringLayout.SOUTH, colorButton, -82, SpringLayout.SOUTH, this);
-		baseLayout.putConstraint(SpringLayout.EAST, colorButton, -91, SpringLayout.EAST, this);
-		baseLayout.putConstraint(SpringLayout.NORTH, randomButton, 80, SpringLayout.NORTH, this);
-	
+		baseLayout.putConstraint(SpringLayout.WEST, randomButton, 0,
+				SpringLayout.WEST, colorButton);
+		baseLayout.putConstraint(SpringLayout.SOUTH, colorButton, -82,
+				SpringLayout.SOUTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, colorButton, -91,
+				SpringLayout.EAST, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, randomButton, 80,
+				SpringLayout.NORTH, this);
+
 		setupPanel();
 		setupLayout();
 		setupListeners();
@@ -47,14 +51,31 @@ public class FirstPanel extends JPanel
 
 	}
 
+	private void changeBackground()
+	{
+		int red = (int) (Math.random() * 256);
+		int green = (int) (Math.random() * 256);
+		int blue = (int) (Math.random() * 256);
+		this.setBackground(new Color(red, green, blue));
+	}
+
 	private void setupListeners()
 	{
 		colorButton.addActionListener(new ActionListener()
 		{
-			//Creates an anonymous instance of a class that runs when the program starts. Allowing the click action to be performed.
+			// Creates an anonymous instance of a class that runs when the
+			// program starts. Allowing the click action to be performed.
 			public void actionPerformed(ActionEvent click)
 			{
 				setBackground(Color.blue);
+			}
+		});
+
+		randomButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				changeBackground();
 			}
 		});
 	}
